@@ -1,7 +1,8 @@
 #include "Human.h"
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
+#include "cmake.h"
 
-int main()
+int main(int argc, char* argcv[])
 {
   GLFWwindow *windows;
   const char *description;
@@ -11,10 +12,14 @@ int main()
     printf("Error: %s\n", description);
     exit(EXIT_FAILURE);
   }
-  Human *h = new Human(1, "Aditya");
-  h->show_age();
-  h->show_name();
-  delete h;
+
+  std::cout << argcv[0] << " Version " << cmake_VERSION_MAJOR << "." << cmake_VERSION_MINOR << "\n";
+
+  // Human *h = new Human(1, "Aditya");
+  // h->show_age();
+  // h->show_name();
+  // delete h;
+
   windows = glfwCreateWindow(300, 300, "Multi-Window Example", NULL, NULL);
   while (true)
   {

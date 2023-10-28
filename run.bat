@@ -1,1 +1,1 @@
-build\SOLID.exe
+build\cmake.exe
