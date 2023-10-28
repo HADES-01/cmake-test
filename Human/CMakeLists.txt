@@ -1,0 +1,1 @@
+add_library(Human Human.cpp Human.h)
