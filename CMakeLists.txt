@@ -52,11 +52,11 @@ endif()
 
 add_subdirectory(ext/glfw)
 add_subdirectory(ext/glad)
-add_subdirectory(ext/glew/build/cmake)
+add_subdirectory(ext/glew-cmake/build/cmake)
 
 target_link_directories(${PROJECT_NAME} 
     PRIVATE ext/glfw/src
-    ext/glew/src
+    ext/glew-cmake/src
     ext/glad/src
     ${LIB_DIRS} 
 )
@@ -64,7 +64,7 @@ target_link_directories(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} 
     PUBLIC ext/glfw/include
     ext/glfw/deps
-    ext/glew/include
+    ext/glew-cmake/include
     ext/glad/include
     ${INCLUDE_DIRS}
 )
