@@ -1,6 +1,10 @@
-#include "Human.h"
 #include "GLFW/glfw3.h"
 #include "cmake.h"
+#include <iostream>
+
+#ifdef USE_HUMAN
+  #include "Human.h"
+#endif
 
 int main(int argc, char* argcv[])
 {
@@ -15,10 +19,12 @@ int main(int argc, char* argcv[])
 
   std::cout << argcv[0] << " Version " << cmake_VERSION_MAJOR << "." << cmake_VERSION_MINOR << "\n";
 
-  // Human *h = new Human(1, "Aditya");
-  // h->show_age();
-  // h->show_name();
-  // delete h;
+#ifdef USE_HUMAN
+  Human *h = new Human(1, "Aditya");
+  h->show_age();
+  h->show_name();
+  delete h;
+#endif
 
   windows = glfwCreateWindow(300, 300, "Multi-Window Example", NULL, NULL);
   while (true)
