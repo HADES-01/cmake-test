@@ -51,21 +51,27 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
 endif()
 
 add_subdirectory(ext/glfw)
-
+add_subdirectory(ext/glad)
+add_subdirectory(ext/glew/build/cmake)
 
 target_link_directories(${PROJECT_NAME} 
     PRIVATE ext/glfw/src
+    ext/glew/src
+    ext/glad/src
     ${LIB_DIRS} 
 )
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC ext/glfw/include
+    ext/glfw/deps
+    ext/glew/include
+    ext/glad/include
     ${INCLUDE_DIRS}
 )
 
 find_package(OpenGL REQUIRED)
 
-target_link_libraries(${PROJECT_NAME} ${LIBS} glfw OpenGL::GL)
+target_link_libraries(${PROJECT_NAME} ${LIBS} glfw OpenGL::GL glew glad)
 
 include(InstallRequiredSystemLibraries)
 include(CPack)
