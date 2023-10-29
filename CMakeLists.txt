@@ -9,7 +9,7 @@ project(cmake VERSION 1.3)
 # creating an option to include Human Library or not.
 # defaults to ON
 option(USE_HUMAN "Basic Library" OFF)
-option(USE_GRAPHICS "Graphics Library" ON)
+option(USE_GRAPHICS "Graphics Library" OFF)
 option(TEST "Start TESTING" OFF)
 
 if(TEST) 
@@ -29,16 +29,16 @@ endif()
 if(USE_GRAPHICS)
     find_package(Git QUIET)
     if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
-    # Update submodules as needed
-    option(GIT_SUBMODULE "Check submodules during build" ON)
-    if(GIT_SUBMODULE)
-        message(STATUS "Submodule update")
-        execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
-                        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                        RESULT_VARIABLE GIT_SUBMOD_RESULT)
-        if(NOT GIT_SUBMOD_RESULT EQUAL "0")
-            message(FATAL_ERROR "git submodule update --init failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
-        endif()
+        # Update submodules as needed
+        option(GIT_SUBMODULE "Check submodules during build" ON)
+        if(GIT_SUBMODULE)
+            message(STATUS "Submodule update")
+            execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+                            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                            RESULT_VARIABLE GIT_SUBMOD_RESULT)
+            if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+                message(FATAL_ERROR "git submodule update --init failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
+            endif()
         endif()
     endif()
         
@@ -65,6 +65,8 @@ if(TEST)
     enable_testing()
     add_subdirectory(tests)
 endif()
+
+list(APPEND INCLUDE_DIRS "ext/boost")
 
 if(NOT TEST)
     # Points to the main file to be compiled

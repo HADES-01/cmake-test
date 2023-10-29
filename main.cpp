@@ -1,4 +1,7 @@
 #include <cmake.h>
+#include <algorithm>
+#include <iostream>
+// #include <boost/lambda/lambda.hpp>
 #ifdef USE_HUMAN
     #include "Human.h"
 #endif
@@ -7,6 +10,9 @@
 #endif
 
 int main() {
+    using namespace boost::lambda;
+    typedef std::istream_iterator<int> in;
+    std::for_each(in(std::cin), in(), std::cout << (_1 * _1) << " " );
 #ifdef USE_HUMAN
     Human h(3, "Aditya");
     h.show_age();
