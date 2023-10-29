@@ -1,1 +1,1 @@
-cmake -DUSE_HUMAN=OFF -DGLFW_BUILD_DOCS=OFF -G "MinGW Makefiles" -S . -B build
+cmake -G "MinGW Makefiles" -S . -B build

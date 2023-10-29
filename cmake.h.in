@@ -2,3 +2,4 @@
 #define cmake_VERSION_MINOR @cmake_VERSION_MINOR@
 
 #cmakedefine USE_HUMAN
+#cmakedefine USE_GRAPHICS
