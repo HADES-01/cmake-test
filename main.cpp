@@ -1,7 +1,7 @@
 #include <cmake.h>
 #include <algorithm>
 #include <iostream>
-// #include <boost/lambda/lambda.hpp>
+#include <boost/lambda/lambda.hpp>
 #ifdef USE_HUMAN
     #include "Human.h"
 #endif

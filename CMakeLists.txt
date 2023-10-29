@@ -66,7 +66,7 @@ if(TEST)
     add_subdirectory(tests)
 endif()
 
-list(APPEND INCLUDE_DIRS "ext/boost")
+list(APPEND INCLUDE_DIRS "C:/boost/boost_1_83_0")
 
 if(NOT TEST)
     # Points to the main file to be compiled
