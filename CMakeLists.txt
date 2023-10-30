@@ -10,6 +10,7 @@ project(cmake VERSION 1.3)
 # defaults to ON
 option(USE_HUMAN "Basic Library" OFF)
 option(USE_GRAPHICS "Graphics Library" OFF)
+option(USE_BOOST "BOOST LIBRARY" OFF)
 option(TEST "Start TESTING" OFF)
 
 if(TEST) 
@@ -66,7 +67,12 @@ if(TEST)
     add_subdirectory(tests)
 endif()
 
-list(APPEND INCLUDE_DIRS "C:/boost/boost_1_83_0")
+
+
+if(DEFINED ENV{BOOST_INCLUDE} AND USE_BOOST)
+    list(APPEND INCLUDE_DIRS $ENV{BOOST_INCLUDE})
+    set(USE_BOOST ON)
+endif()
 
 if(NOT TEST)
     # Points to the main file to be compiled

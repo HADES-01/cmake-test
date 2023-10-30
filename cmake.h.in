@@ -3,3 +3,4 @@
 
 #cmakedefine USE_HUMAN
 #cmakedefine USE_GRAPHICS
+#cmakedefine USE_BOOST
